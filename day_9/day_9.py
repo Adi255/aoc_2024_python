@@ -107,7 +107,7 @@ def calculate_whole_file_checksum(compacted_sized_blocks):
 
 
 if __name__ == '__main__':
-    disk = load_disk_map("day8_input.txt")
+    disk = load_disk_map("day9_input.txt")
     print("reading blocks")
     disk_blocks = create_file_blocks(disk)
     print("compacting")

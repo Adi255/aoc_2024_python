@@ -1,6 +1,6 @@
 import unittest
 
-from day_8.day_8 import *
+from day_9.day_9 import *
 
 TEST_DISK_MAP = "2333133121414131402"
 
