@@ -1,6 +1,7 @@
 def load_trail_map(file_path):
     with open(file_path) as f:
-        return [list(num for num in map(lambda char: int(char), line.strip())) for line in f.readlines()]
+        return [list(num for num in map(lambda char: int(char), line.strip()))
+                for line in f.readlines()]
 
 
 class TrailFinder():
@@ -11,7 +12,6 @@ class TrailFinder():
         return list((i, j) for i in range(len(self.hiking_map))
                     for j in range(len(self.hiking_map[i]))
                     if self.hiking_map[i][j] == 0)
-
 
     def trail_score_total(self):
         return sum(self.score_trail_head(trail_head) for trail_head in self.find_trailheads())
@@ -42,9 +42,8 @@ class TrailFinder():
             return []
         trail_ends = []
         for next_position in next_positions:
-            trail_ends += self.score_trail(next_position)
+            trail_ends.extend(self.score_trail(next_position))
         return trail_ends
-
 
     def next_positions(self, position, current_value):
         row, col = position
