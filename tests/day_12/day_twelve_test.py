@@ -1,13 +1,11 @@
 import unittest
-from cmath import acosh
-from math import expm1
 
 from day_12.day_twelve import load_garden_map, GardenPlot
 
 
 class MyTestCase(unittest.TestCase):
     def test_load_garden_map(self):
-        actual = load_garden_map("./test_input.txt")
+        actual = load_garden_map("test_input.txt")
         expected = [
             ['R', 'R', 'R', 'R', 'I', 'I', 'C', 'C', 'F', 'F'],
             ['R', 'R', 'R', 'R', 'I', 'I', 'C', 'C', 'C', 'F'],
@@ -33,22 +31,12 @@ class MyTestCase(unittest.TestCase):
         start_position = (0, 0)
         actual = garden_plot.calculate_region_area_perimeter(start_position, 'A')
 
-        expected = (4, 10)
-        self.assertEqual(expected, actual)
+        expected_area = 4
+        expected_sides = 10
 
-    def test_calculate_another_region_area_perimeter(self):
-        garden = [
-            ['A', 'A', 'A', 'A'],
-            ['B', 'B', 'C', 'D'],
-            ['B', 'B', 'C', 'C'],
-            ['E', 'E', 'E', 'C']
-        ]
-        garden_plot = GardenPlot(garden)
-        start_position = (1, 0)
-        actual = garden_plot.calculate_region_area_perimeter(start_position, 'B')
+        self.assertEqual(expected_area, len(actual[0]))
+        self.assertEqual(expected_sides, actual[1])
 
-        expected = (4, 8)
-        self.assertEqual(expected, actual)
 
     def test_calculate_another_region_area_perimeter(self):
         garden = [
@@ -62,8 +50,10 @@ class MyTestCase(unittest.TestCase):
         start_position = (0, 0)
         actual = garden_plot.calculate_region_area_perimeter(start_position, 'O')
 
-        expected = (21, 36)
-        self.assertEqual(expected, actual)
+        expected_area = 21
+        expected_sides = 36
+        self.assertEqual(expected_area, len(actual[0]))
+        self.assertEqual(expected_sides, actual[1])
 
     def test_calc_fence_cost(self):
         garden = [
