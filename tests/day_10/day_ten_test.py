@@ -22,33 +22,33 @@ class MyTestCase(unittest.TestCase):
             [9, 0, 7, 6]
         ])
 
-        actual = trail_finder.find_trailheads(input)
+        actual = trail_finder.find_trailheads()
         expected = [(0, 0), (1, 2), (3, 1)]
         self.assertEqual(expected, actual)
 
     def test_find_next_positions(self):
-        map = [
+        trail_map = [
             [0, 1, 2, 3],
             [1, 2, 7, 4],
             [8, 7, 6, 5],
             [9, 8, 7, 6]
         ]
-        trail_finder = TrailFinder(map)
+        trail_finder = TrailFinder(trail_map)
         position = (2, 2)
 
-        actual = trail_finder.next_positions(position)
+        actual = trail_finder.next_positions(position, 6)
 
         expected = [(1, 2), (3, 2), (2, 1)]
         self.assertEqual(expected, actual)
 
     def test_calculate_trailhead_score(self):
-        map = [
+        trail_map = [
             [0, 1, 2, 3],
             [1, 2, 7, 4],
             [3, 7, 6, 5],
             [9, 8, 7, 6]
         ]
-        trail_finder = TrailFinder(map)
+        trail_finder = TrailFinder(trail_map)
         trail_head_position = (0, 0)
 
         actual = trail_finder.score_trail_head(trail_head_position)
@@ -57,7 +57,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_calculate_multiple_trailhead_scores(self):
-        map = [
+        trail_map = [
             [8, 9, 0, 1, 0, 1, 2, 3],
             [7, 8, 1, 2, 1, 8, 7, 4],
             [8, 7, 4, 3, 0, 9, 6, 5],
@@ -67,14 +67,14 @@ class MyTestCase(unittest.TestCase):
             [0, 1, 3, 2, 9, 8, 0, 1],
             [1, 0, 4, 5, 6, 7, 3, 2]
         ]
-        trail_finder = TrailFinder(map)
+        trail_finder = TrailFinder(trail_map)
         actual = trail_finder.trail_score_total()
 
         expected = 36
         self.assertEqual(expected, actual)
 
     def test_rate_trailhead(self):
-        map = [
+        trail_map = [
             [0, 1, 2, 3, 4, 5],
             [1, 2, 3, 4, 5, 6],
             [2, 3, 4, 5, 6, 7],
@@ -82,7 +82,7 @@ class MyTestCase(unittest.TestCase):
             [4, 1, 6, 7, 8, 9],
             [5, 6, 7, 8, 9, 6]
         ]
-        trail_finder = TrailFinder(map)
+        trail_finder = TrailFinder(trail_map)
 
         actual = trail_finder.trail_rating_total()
 
