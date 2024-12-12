@@ -89,6 +89,11 @@ class MyTestCase(unittest.TestCase):
         expected = 227
         self.assertEqual(expected, actual)
 
+    def test_sublist(self):
+        values = [1, 2, 3, 4]
+
+        print(list(value + values[i+1] for value, i in enumerate(values[:-1])))
+
 
 if __name__ == '__main__':
     unittest.main()
