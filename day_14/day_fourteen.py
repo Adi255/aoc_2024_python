@@ -110,6 +110,7 @@ def __horizontal_sequences(bots_on_line, x_range):
             on_line = False
     return lines
 
+# Detect when there are more than 5 horizontal lines of robots (> length 5
 def detect_xmas_tree(robots, grid):
     time = 0
     tree_found = False
